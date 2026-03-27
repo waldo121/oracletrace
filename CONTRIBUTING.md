@@ -17,7 +17,7 @@ Contributions are welcome for:
 ## Before You Start
 
 * Read [README.md](README.md)
-* Check docs under [docs/docs](docs/docs)
+* Check docs under https://kaykcaputo.github.io/oracletrace/
 * Browse open issues, especially good first issues:
   https://github.com/KaykCaputo/oracletrace/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 
@@ -28,7 +28,7 @@ Contributions are welcome for:
 ### 1. Clone your fork
 
 ```bash
-git clone https://github.com/<your-user>/oracletrace.git
+git clone https://github.com/<Your-User>/oracletrace.git
 cd oracletrace
 ```
 
