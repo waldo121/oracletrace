@@ -11,7 +11,9 @@ Complete command reference for OracleTrace.
 ## Command syntax
 
 ```bash
-oracletrace <target> [--json OUTPUT.json] [--compare BASELINE.json]
+oracletrace <target> [--json OUTPUT.json] [--csv OUTPUT.csv] [--compare BASELINE.json]
+oracletrace <target> [--ignore REGEX [REGEX ...]] 
+oracletrace <target> [--top NUMBER]
 ```
 
 ## Required argument
@@ -38,6 +40,14 @@ oracletrace my_app.py --json run.json
 
 Use this when you want to keep historical traces or compare later.
 
+### `--csv`
+
+Exports the trace results to a csv file.
+
+```bash
+oracletrace my_app.py --csv run.csv
+```
+
 ### `--compare`
 
 Compares the current run against a previous JSON trace.
@@ -51,6 +61,24 @@ Comparison output includes:
 - Functions with performance increase or decrease
 - Newly added functions
 - Removed functions
+
+### `--ignore`
+
+Specify file paths and function names to ignore using regular expression syntax.
+
+```bash
+oracletrace my_app.py --ignore *test* *test*.py
+```
+
+The ignored files and functions will not appear in the summary table neither the logic flow output.
+
+### `--top`
+
+Limit the summary table output to a maximum number of results.
+
+```bash
+oracletrace my_app.py --top 10
+```
 
 ## Exit behavior
 
