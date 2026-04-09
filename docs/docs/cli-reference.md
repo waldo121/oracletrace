@@ -67,6 +67,8 @@ Comparison output includes:
 
 Makes OracleTrace return a non-zero exit code when a regression exceeds the configured threshold.
 
+Use this together with `--compare`.
+
 Example:
 
 ```bash
@@ -77,6 +79,8 @@ oracletrace my_app.py --json current.json --compare baseline.json --fail-on-regr
 
 Sets the percentage threshold used with `--fail-on-regression`.
 
+Default value: `5.0`
+
 ```bash
 oracletrace my_app.py --compare baseline.json --fail-on-regression --threshold 25
 ```
@@ -86,10 +90,12 @@ oracletrace my_app.py --compare baseline.json --fail-on-regression --threshold 2
 Specify file paths and function names to ignore using regular expression syntax.
 
 ```bash
-oracletrace my_app.py --ignore *test* *test*.py
+oracletrace my_app.py --ignore ".*test.*" ".*helpers.py:debug_.*"
 ```
 
 The ignored files and functions will not appear in the summary table neither the logic flow output.
+
+Ignore matching is applied on function keys in the form `relative_path.py:qualified_function_name`.
 
 ### `--top`
 
@@ -122,7 +128,7 @@ oracletrace app.py --json current.json --compare baseline.json
 ### CI regression workflow
 
 ```bash
-oracletrace app.py --json current.json --compare baseline.json
+oracletrace app.py --json current.json --compare baseline.json --fail-on-regression --threshold 10
 ```
 
 Store `baseline.json` as a known-good artifact.

@@ -74,6 +74,19 @@ Export trace results for:
 * Historical comparison
 * Automation pipelines
 
+### CSV Export
+
+Export flat trace metrics for spreadsheets and custom reports.
+
+### Flexible Filtering and Focus
+
+* Ignore functions and files with regex patterns (`--ignore`)
+* Limit summary output to top N functions (`--top`)
+
+### CI Regression Gates
+
+Use `--fail-on-regression` with `--threshold` to make pipelines fail on meaningful slowdowns.
+
 ### Clean Output
 
 Filters internal Python calls to focus only on your project code.
@@ -129,6 +142,12 @@ oracletrace my_app.py --json new.json --compare baseline.json
 ```
 
 This allows you to detect performance regressions between two executions.
+
+### Fail CI when regression exceeds threshold
+
+```bash
+oracletrace my_app.py --json current.json --compare baseline.json --fail-on-regression --threshold 25
+```
 
 ---
 
@@ -206,6 +225,12 @@ Logic Flow:
 Contributions are welcome.
 
 If you have ideas for improving regression detection, trace comparison, or visualization features, feel free to open an issue or submit a pull request.
+
+To run tests locally:
+
+```bash
+pytest tests/
+```
 
 ---
 
