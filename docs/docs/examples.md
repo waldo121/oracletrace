@@ -30,6 +30,17 @@ Best for:
 - Keeping historical performance snapshots
 - Sharing results between local and CI environments
 
+## Save trace data to CSV
+
+```bash
+oracletrace my_script.py --csv trace.csv
+```
+
+Best for:
+
+- Spreadsheet analysis
+- Custom dashboard ingestion
+
 ## Compare two executions
 
 ```bash
@@ -59,6 +70,27 @@ oracletrace my_script.py --json current.json --compare baseline.json --fail-on-r
 
 This is useful in CI when you want the run to fail if performance gets worse by more than 25 percent.
 
+Exit code behavior in this case:
+
+- `0` when no regression exceeds threshold
+- `2` when at least one regression exceeds threshold
+
+## Ignore noisy functions or files
+
+```bash
+oracletrace my_script.py --ignore ".*test.*" ".*helpers.py:debug_.*"
+```
+
+Use this to remove known noisy paths/functions from summaries and call flow.
+
+## Focus on top offenders
+
+```bash
+oracletrace my_script.py --top 10
+```
+
+Useful when you want a concise summary of the heaviest functions.
+
 ## Lightweight CI check pattern
 
 ```bash
@@ -66,7 +98,7 @@ This is useful in CI when you want the run to fail if performance gets worse by 
 oracletrace my_script.py --json baseline.json
 
 # in CI pipeline
-oracletrace my_script.py --json current.json --compare baseline.json
+oracletrace my_script.py --json current.json --compare baseline.json --fail-on-regression --threshold 10
 ```
 
 Use this when you want a simple, scriptable guardrail before merging changes.

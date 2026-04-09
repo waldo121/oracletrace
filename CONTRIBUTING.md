@@ -101,7 +101,13 @@ Explain the motivation, what changed, and expected impact.
 
 ## Validation
 
-This repository currently has no automated test suite, so manual validation is important.
+This repository has automated CLI tests with `pytest`. Run tests before opening a PR.
+
+### Automated tests
+
+```bash
+pytest
+```
 
 ### CLI smoke check
 

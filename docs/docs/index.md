@@ -71,12 +71,21 @@ Store results and plug them into:
 - Historical regression tracking
 - Custom analysis scripts
 
+### CSV export for reporting
+
+Export flat metrics for spreadsheet workflows and external dashboards.
+
+### Regression gates for CI
+
+Use `--fail-on-regression` and `--threshold` to fail builds only when slowdowns pass your tolerance.
+
 ## Quick command preview
 
 ```bash
 oracletrace my_app.py
 oracletrace my_app.py --json baseline.json
 oracletrace my_app.py --json new.json --compare baseline.json
+oracletrace my_app.py --json new.json --compare baseline.json --fail-on-regression --threshold 10
 ```
 
 ![OracleTrace CLI demo](assets/oracletrace-cli-demo.gif)

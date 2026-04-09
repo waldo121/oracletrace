@@ -56,6 +56,12 @@ oracletrace my_app.py --json baseline.json
 
 Keep this file as your reference run.
 
+Optional: also export to CSV for spreadsheet-style analysis.
+
+```bash
+oracletrace my_app.py --csv baseline.csv
+```
+
 ## 4. Simulate a regression and compare
 
 Increase one of the `sleep` values in your script, then run:
@@ -82,3 +88,13 @@ Example flow:
 ```
 
 OracleTrace is optimized for relative change detection between runs, which makes it ideal for everyday checks and CI validation.
+
+## 6. Add a CI regression gate (optional)
+
+Use the comparison step as a build guard:
+
+```bash
+oracletrace my_app.py --json current.json --compare baseline.json --fail-on-regression --threshold 10
+```
+
+When a function regresses above the configured threshold, OracleTrace returns exit code `2`.
